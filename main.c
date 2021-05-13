@@ -1,62 +1,33 @@
 #include "monty.h"
 
-/**
- * main - runs and interpretates monty language intructions.
- * @argc: No of arguments in the command line
- * @argv: Arguments in the command line
- * Return: 1 if successfull / Error messagge otherwise
- */
-
-int main(int __attribute__((unused)) argc, char **argv)
+int main(int argc, char **argv)
 {
-	int fd, f_size = 0, num_lett = BUFSIZ;
-	char *buff = NULL, **cmd_lines = NULL, **command = NULL;
-	unsigned int i = 0;
-	stack_t **stack = NULL;
+	int i = 0;
+	char **command = NULL, *line_buf = NULL;
+	ssize_t bytes = 0;
+	size_t line_buf_size = 0;
+	/*stack_t **stack = NULL;*/
+	FILE *fd = NULL;
 
-	buff = malloc(num_lett * sizeof(char));
-	if (!buff)
-	{
-		perror("Error: malloc failed");
-		return (EXIT_FAILURE);
-	}
-	fd = open(argv[1], O_RDONLY);
-	if (fd < 0)
-	{
-		perror("Error: Can't open file");
-		free(buff);
-		return (EXIT_FAILURE);
-	}
-	f_size = read(fd, buff, num_lett); /*f_size stores no. of chars of the file*/
-	/*ADD ERROR MESSAGGE IF CANT READ*/
-	if (f_size == -1)
-	{
-		close(fd);
-		free(buff);
-		return (0);
-	}
-	buff[f_size] = 00;
-	cmd_lines = lines_tokenizer(buff); /*split file into lines"*/
-	while (cmd_lines[i])
-	{
-		command = words_tokenizer(cmd_lines[i]);
-		unsigned int value = atoi(command[1]);
-		/*INSERTAR llamado a function pointers en esta linea*/
-		get_op(command[0], stack, i);
-		double_ptr_free(command);
-		*command = NULL;
+	if (argc > 2)
+		exit(EXIT_FAILURE);
+	fd = fopen(argv[1], "r");
+	if (!fd)
+		exit(EXIT_FAILURE);
 
-		printf("Variable global = %i \n", value);
-		/*k = 0;
-		while(command[k])
-		{
-			printf("%s ", command[k]);
-			k++;
-		}
-		printf("\n");
-		ejecutar el comando leido*/
+	bytes = getline(&line_buf, &line_buf_size, fd);
+	while (bytes >= 0)
+	{
 		i++;
+		printf("linea completa del getline: %s\n", line_buf);
+		command = words_tokenizer(line_buf);
+		value = atoi(command[1]);
+		printf("VALUE: %i,  LINEA: %i, COMMAND: %s\n", value, i, command[0]);
+		/*get_op(command[0], stack, i);*/
+		line_buf = NULL;
+		free_grid(command);
+		bytes = getline(&line_buf, &line_buf_size, fd);
 	}
-double_ptr_free(cmd_lines);
-free_stack(stack);
+	free(line_buf);
+	return(0);
 }
