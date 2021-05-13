@@ -1,6 +1,6 @@
 #ifndef MONTY_H
 #define MONTY_H
-
+#define _GNU_SOURCE
 
 #include <stdio.h>
 #include <stddef.h>
@@ -48,7 +48,7 @@ char **lines_tokenizer(char *string);
 char **words_tokenizer(char *string);
 char *_strdup(char *str);
 void double_ptr_free(char **array);
-void double_ptr_free(char **array);
+void free_grid(char **grid);
 void free_stack(stack_t **stack);
 void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);

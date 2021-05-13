@@ -9,9 +9,10 @@
 
 void push(stack_t **stack, unsigned int line_number)
 {
+	stack_t *new = NULL, *temp = NULL;
 	(void)line_number;
-	stack_t *new = NULL, *temp = *stack;
 
+	printf("before malloc");
 	new = malloc(sizeof(stack_t));
 	if (!new)
 	{

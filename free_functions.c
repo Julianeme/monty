@@ -5,13 +5,16 @@
  * @array: is a doble pointer
  */
 
-void double_ptr_free(char **array)
+void free_grid(char **grid)
 {
-	int x = 0;
+	int i = 0;
 
-	for (x = 0; array[x] != NULL; x++)
-		free(array[x]);
-	free(*array);
+	while (grid[i])
+	{
+		free(grid[i]);
+		i++;
+	}
+	free(grid);
 }
 
 /**
