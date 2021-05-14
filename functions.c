@@ -94,3 +94,26 @@ void pop(stack_t **stack, unsigned int line_number)
 	}
 	free(temp);
 }
+
+/**
+ * swap - swap the two top elements of the stack
+ * @head: a double pointer to the stack of the linked list
+ * @line_number: file line number where the op was requested
+ * Return: nothing if succes, EXIT_FAILURE if it fails
+ */
+
+void swap(stack_t **head, unsigned int line_number)
+{
+	int aux = 0;
+	stack_t *temp = *head;
+
+	if (!temp->next)
+	{
+		printf("L<%u>: can't swap, stack too short", line_number);
+		exit(EXIT_FAILURE);
+	}
+
+	aux = temp->n;
+	temp->n = temp->next->n;
+	temp->next->n = aux;
+}
