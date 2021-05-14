@@ -16,12 +16,17 @@ int main(int argc, char **argv)
 	stack_t *stack = NULL;
 	FILE *fd = NULL;
 
-	if (argc > 2)
+	if (argc != 2)
+	{
+		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
+	}
 	fd = fopen(argv[1], "r");
 	if (!fd)
+	{
+		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 		exit(EXIT_FAILURE);
-
+	}
 	bytes = getline(&line_buf, &line_buf_size, fd);
 	while (bytes >= 0)
 	{
@@ -30,10 +35,16 @@ int main(int argc, char **argv)
 		if (command[1])
 			value = atoi(command[1]);
 		if (command[0])
+		{
+			if (strcmp(command[0], "push") == 0 && !command[1])
+			{
+				fprintf(stderr, "Error: L%u: usage: push integer\n", i);
+				exit(EXIT_FAILURE);
+			}
 			get_op(command[0], &stack, i);
-		/*value = NULL;*/
+		}
 		line_buf = NULL;
-		command = NULL;
+		free_grid(command), command = NULL;
 		bytes = getline(&line_buf, &line_buf_size, fd);
 	}
 	free(line_buf);
