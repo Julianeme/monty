@@ -66,3 +66,31 @@ void pint(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 }
+
+/**
+ * pop - removes the top element of the stack
+ * in a doubly linked list
+ * @stack: a double pointer to the stack of the linked list
+ * @line_number: file line number where the op was requested
+ * Return: the address of the new element, or NULL if it failed
+ */
+void pop(stack_t **stack, unsigned int line_number)
+{
+	stack_t *temp = *stack;
+
+	if (!*stack)
+	{
+		printf("L<%u>: can't pint, stack empty\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	if (temp->next)
+	{
+		*stack = temp->next;
+		temp->next->prev = NULL;
+	}
+	else
+	{
+		*stack = NULL;
+	}
+	free(temp);
+}
