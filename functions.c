@@ -2,36 +2,29 @@
 
 /**
  * push - adds a node at the beggining of a linked list
- * @stack: a double pointer to the stack of the linked list
+ * @head: a double pointer to the stack of the linked list
  * @line_number: file line number where the op was requested
  * Return: nothing if succes, EXIT_FAILURE if it fails
  */
 
-void push(stack_t **stack, unsigned int line_number __attribute__((unused)))
+void push(stack_t **head, unsigned int line_number)
 {
-	stack_t *new = NULL, *temp = NULL;
-	temp = *stack;
+	stack_t *new_node, *temp;
 
-	new = malloc(sizeof(stack_t));
-	if (!new)
+	(void)line_number;
+	new_node = malloc(sizeof(stack_t));
+	if (new_node == NULL)
 	{
-		perror("Error: malloc failed");
 		exit(EXIT_FAILURE);
 	}
-	new->n = value;
-	if (*stack == NULL)
+	new_node->n = value, new_node->prev = NULL, new_node->next = NULL;
+	if (*head == NULL)
 	{
-		new->prev = NULL;
-		new->next = *stack;
-		*stack = new;
+		*head = new_node;
 	}
 	else
-	{
-		new->prev = NULL;
-		new->next = *stack;
-		temp->prev = new;
-		*stack = new;
-	}
+		temp = *head, new_node->next = *head,
+		temp->prev = new_node, *head = new_node;
 }
 /**
  * pall -  prints all the elements of a doubly linked list.
@@ -42,10 +35,12 @@ void push(stack_t **stack, unsigned int line_number __attribute__((unused)))
 
 void pall(stack_t **stack, unsigned int line_number)
 {
+	stack_t *temp = *stack;
+
 	(void)line_number;
-	while (stack)
+	while (temp)
 	{
-		printf("%i\n", (*stack)->n);
-		*stack = (*stack)->next;
+		printf("%i\n", temp->n);
+		temp = temp->next;
 	}
 }

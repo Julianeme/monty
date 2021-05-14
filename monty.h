@@ -11,7 +11,6 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 
-int value;
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -43,16 +42,19 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-void get_op(char *s, stack_t **stack, unsigned int line_number) ;
+int value;
+
+void get_op(char *s, stack_t **stack, unsigned int line_number);
 char **lines_tokenizer(char *string);
 char **words_tokenizer(char *string);
 char *_strdup(char *str);
 void double_ptr_free(char **array);
 void free_grid(char **grid);
 void free_stack(stack_t **stack);
-void push(stack_t **stack, unsigned int line_number);
+void push(stack_t **head, unsigned int num_lines);
 void pall(stack_t **stack, unsigned int line_number);
 void pint(stack_t **stack, unsigned int line_number);
 void pop(stack_t **stack, unsigned int line_number);
+int count_words(char *string);
 
 #endif

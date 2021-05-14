@@ -1,26 +1,51 @@
 #include "monty.h"
 /**
- * com_storer- spit the command line into words and creates a array of pointers
+ * words_tokenizer- splits the string line into words and
+ * creates a array of pointers
  * pointing to each one.
- * @string: the string containing the command line to be splitted into words
+ * @string: the string containing the string line to be splitted into words
  * Return: a pointer to the array of pointers cmd_words
  */
 
 char **words_tokenizer(char *string)
 {
-	char **cmd_words = NULL, *string_cpy = NULL;
-	int i = 0;
+	int position = 0;
+	char *token = NULL;
+	char **tokens = NULL;
 
-	string_cpy = _strdup(string);
-	cmd_words = malloc(sizeof(char *) * 3);
-	i = 0;
-	cmd_words[0] = _strdup(strtok(string_cpy, " \t\n"));
-	while (cmd_words[i] && i < 2)
+	/*allocate memory to pointer tokens*/
+	tokens = malloc((count_words(string) + 1) * sizeof(char *));
+	if (tokens == NULL)
+		return (NULL);
+	/* pointer receiving tokenized string*/
+	token = strtok(string, " \t\r\n");
+	/*as long as tokens is different from null it makes a copy of token in token*/
+	while (token != NULL && position < 2)
 	{
-		i++;
-		cmd_words[i] = _strdup(strtok(NULL, " \t\n"));
+		tokens[position] = _strdup(token);
+		/*end in null*/
+		token = strtok(NULL, " \t\r\n");
+		position++;
 	}
-	cmd_words[i] = NULL;
-	free(string_cpy);
-	return (cmd_words);
+	tokens[position] = NULL;
+	return (tokens);
+}
+
+/**
+ * count_words - function that counts words
+ * @string: sentence containing the words to count
+ * Return: number of words
+ */
+int count_words(char *string)
+{
+	int cont1, cont2 = 0;
+
+	for (cont1 = 0; string[cont1]; cont1++)
+	{
+		if (string[cont1] == 32 && string[cont1 + 1] != 32 && string[cont1 + 1] != 0)
+			cont2++;
+	}
+	if (string[0] != 32)
+		cont2++;
+	return (cont2);
 }

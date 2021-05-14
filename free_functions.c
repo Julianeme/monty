@@ -1,8 +1,8 @@
 #include "monty.h"
 
 /**
- * free_cmd -  frees a 2 dimensional array
- * @array: is a doble pointer
+ * free_grid -  frees a 2 dimensional array
+ * @grid: is a doble pointer
  */
 
 void free_grid(char **grid)
@@ -18,7 +18,7 @@ void free_grid(char **grid)
 }
 
 /**
- * free_dlistint -  frees the memory allocated for a doubly linked list
+ * free_stack -  frees the memory allocated for a doubly linked list
  * @stack: a pointer to start of the element of the list
  */
 
