@@ -7,12 +7,11 @@
  * Return: nothing if succes, EXIT_FAILURE if it fails
  */
 
-void push(stack_t **stack, unsigned int line_number)
+void push(stack_t **stack, unsigned int line_number __attribute__((unused)))
 {
 	stack_t *new = NULL, *temp = NULL;
-	(void)line_number;
+	temp = *stack;
 
-	printf("before malloc");
 	new = malloc(sizeof(stack_t));
 	if (!new)
 	{
