@@ -44,3 +44,25 @@ void pall(stack_t **stack, unsigned int line_number)
 		temp = temp->next;
 	}
 }
+
+/**
+ * pint -  prints all the elements of a doubly linked list.
+ * @stack: a pointer to the stack of the list
+ * @line_number: file line number where the op was requested
+ * Return: Nothing
+ */
+
+void pint(stack_t **stack, unsigned int line_number)
+{
+	stack_t *temp = *stack;
+
+	if (temp)
+	{
+		printf("%i\n", temp->n);
+	}
+	else
+	{
+		printf("L%u: can't pint, stack empty\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+}
