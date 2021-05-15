@@ -15,9 +15,12 @@ void push(stack_t **head, unsigned int line_number)
 	new_node = malloc(sizeof(stack_t));
 	if (new_node == NULL)
 	{
+		fprintf(stderr, "Error: malloc failed");
+		if(*head)
+			free_stack(*head);
 		exit(EXIT_FAILURE);
 	}
-	new_node->n = value, new_node->prev = NULL, new_node->next = NULL;
+	new_node->n = global.value, new_node->prev = NULL, new_node->next = NULL;
 	if (*head == NULL)
 	{
 		*head = new_node;

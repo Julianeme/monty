@@ -11,6 +11,20 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 
+/**
+ * global_struct - Global Variable to sotre node value, fd and
+ * double pointer array with monty commands
+ * @value: value to be stored in the node
+ * @fd: File descriptor of the monty file
+ * @cmds: double pointer array with the monty commands
+ */
+
+typedef struct global_struct
+{
+	int value;
+	FILE *fd;
+	char **cmds;
+} global_v;
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -42,7 +56,8 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-int value;
+extern global_v global;
+global_v global;
 
 void get_op(char *s, stack_t **stack, unsigned int line_number);
 char **lines_tokenizer(char *string);
@@ -50,7 +65,7 @@ char **words_tokenizer(char *string);
 char *_strdup(char *str);
 void double_ptr_free(char **array);
 void free_grid(char **grid);
-void free_stack(stack_t **stack);
+void free_stack(stack_t *stack);
 void push(stack_t **head, unsigned int num_lines);
 void pall(stack_t **stack, unsigned int line_number);
 void pint(stack_t **stack, unsigned int line_number);

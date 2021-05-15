@@ -33,12 +33,13 @@ int main(int argc, char **argv)
 		i++;
 		command = words_tokenizer(line_buf);
 		if (command[1])
-			value = atoi(command[1]);
+			value_check(command[1]);
 		if (command[0])
 		{
 			if (strcmp(command[0], "push") == 0 && !command[1])
 			{
 				fprintf(stderr, "Error: L%u: usage: push integer\n", i);
+				free(line_buf);
 				exit(EXIT_FAILURE);
 			}
 			get_op(command[0], &stack, i);
@@ -48,5 +49,7 @@ int main(int argc, char **argv)
 		bytes = getline(&line_buf, &line_buf_size, fd);
 	}
 	free(line_buf);
+	free_stack(stack);
+	fclose(fd);
 	return (0);
 }

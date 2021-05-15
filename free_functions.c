@@ -22,15 +22,14 @@ void free_grid(char **grid)
  * @stack: a pointer to start of the element of the list
  */
 
-void free_stack(stack_t **stack)
+void free_stack(stack_t *stack)
 {
 	stack_t *temp = NULL;
 
 	while (stack)
 	{
-		temp = (*stack)->next;
+		temp = stack->next;
 		free(stack);
-		*stack = temp;
+		stack = temp;
 	}
-	free(*stack);
 }
