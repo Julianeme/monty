@@ -16,7 +16,7 @@ int value_check(char *val)
 		{
 			if (val[i] < 48 || val[i] > 57)
 			{
-				fprintf(stderr, "Error: L%u: usage: push integer\n", i);
+				fprintf(stderr, "L%u: usage: push integer\n", i);
 				/*free(global.line_buf);*/
 				/*fclose(global.fd);*/
 				exit(EXIT_FAILURE);
@@ -25,7 +25,7 @@ int value_check(char *val)
 		}
 		return (atoi(val));
 	}
-	fprintf(stderr, "Error: L%u: usage: push integer\n", i);
+	fprintf(stderr, "L%u: usage: push integer\n", i);
 	/*free(global.line_buf);*/
 	/*fclose(global.fd);*/
 	exit(EXIT_FAILURE);
