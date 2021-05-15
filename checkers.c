@@ -6,7 +6,7 @@
  * Return: string turned into int if is a valid number or error message if not
  */
 
-void value_check(*char val)
+int value_check(char *val)
 {
 	int i = 1;
 
@@ -17,7 +17,8 @@ void value_check(*char val)
 			if (val[i] < 48 || val[i] > 57)
 			{
 				fprintf(stderr, "Error: L%u: usage: push integer\n", i);
-				free(line_buf);
+				/*free(global.line_buf);*/
+				/*fclose(global.fd);*/
 				exit(EXIT_FAILURE);
 			}
 			i++;
@@ -25,6 +26,7 @@ void value_check(*char val)
 		return (atoi(val));
 	}
 	fprintf(stderr, "Error: L%u: usage: push integer\n", i);
-	free(line_buf);
+	/*free(global.line_buf);*/
+	/*fclose(global.fd);*/
 	exit(EXIT_FAILURE);
 }

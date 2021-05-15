@@ -24,6 +24,7 @@ typedef struct global_struct
 	int value;
 	FILE *fd;
 	char **cmds;
+	char *line_buf;
 } global_v;
 
 /**
@@ -63,6 +64,8 @@ void get_op(char *s, stack_t **stack, unsigned int line_number);
 char **lines_tokenizer(char *string);
 char **words_tokenizer(char *string);
 char *_strdup(char *str);
+
+int value_check(char *val);
 void double_ptr_free(char **array);
 void free_grid(char **grid);
 void free_stack(stack_t *stack);
