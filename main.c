@@ -45,6 +45,7 @@ int main(int argc, char **argv)
 			get_op(global.command[0], &stack, i);
 		}
 		free_grid(global.command), global.command = NULL;
+		global.line_buf = NULL;
 		bytes = getline(&global.line_buf, &line_buf_size, global.fd);
 	}
 	camilo_patino(stack);

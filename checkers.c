@@ -41,7 +41,7 @@ int batman(char *line_buf)
 
 	while (line_buf[i])
 	{
-		if (line_buf[i] != ' ' || line_buf[i] != '\t' || line_buf[i != '\n'])
+		if (line_buf[i] != ' ' && line_buf[i] != '\t')
 		{
 			return (1);
 		}
