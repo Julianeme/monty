@@ -64,8 +64,8 @@ void get_op(char *s, stack_t **stack, unsigned int line_number);
 char **lines_tokenizer(char *string);
 char **words_tokenizer(char *string);
 char *_strdup(char *str);
-
-int value_check(char *val);
+void push_error(int i);
+int value_check(char *val, unsigned int line_number);
 void double_ptr_free(char **array);
 void free_grid(char **grid);
 void free_stack(stack_t *stack);

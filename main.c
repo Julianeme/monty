@@ -33,15 +33,12 @@ int main(int argc, char **argv)
 		i++;
 		command = words_tokenizer(line_buf);
 		if (command[1])
-			global.value = value_check(command[1]);
+			global.value = value_check(command[1], i);
 		if (command[0])
 		{
 			if (strcmp(command[0], "push") == 0 && !command[1])
-			{
-				fprintf(stderr, "L%u: usage: push integer\n", i);
-				free(line_buf);
-				exit(EXIT_FAILURE);
-			}
+				push_error(i);
+
 			get_op(command[0], &stack, i);
 		}
 		line_buf = NULL;
