@@ -32,7 +32,7 @@ int value_check(stack_t *stack, char *val, unsigned int line_number)
 /**
  * batman - cheks for lines with only spaces and tabs in it
  * @line_buf: line to read
- * Return: 0 if not empty line, 1 otherwise
+ * Return: 0 if empty line, 1 otherwise
  */
 
 int batman(char *line_buf)
@@ -48,4 +48,17 @@ int batman(char *line_buf)
 		i++;
 	}
 	return (0);
+}
+
+/**
+ * argc_checker - checks if the number of arguments is correct
+ * @argc: The number of arguments
+ */
+void argc_checker(int argc)
+{
+	if (argc != 2)
+	{
+		fprintf(stderr, "USAGE: monty file\n");
+		exit(EXIT_FAILURE);
+	}
 }
