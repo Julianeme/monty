@@ -120,8 +120,7 @@ void swap(stack_t **head, unsigned int line_number)
 		free(*head);
 		exit(EXIT_FAILURE);
 	}
-
-	aux = temp->n;
-	temp->n = temp->next->n;
-	temp->next->n = aux;
+	aux = (*head)->n;
+	(*head)->n = (*head)->next->n;
+	(*head)->next->n = aux;
 }
