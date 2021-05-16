@@ -47,3 +47,14 @@ void global_free(stack_t *stack)
 	free_grid(global.command);
 	exit(EXIT_FAILURE);
 }
+/**
+ * camilo_patino - free memory of the main (in honor to camilo patiño)
+ * @stack: double linked list stack
+ */
+void camilo_patino(stack_t *stack)
+{
+	free(global.line_buf);
+	free_stack(stack);
+	fclose(global.fd);
+	free(global.command);
+}

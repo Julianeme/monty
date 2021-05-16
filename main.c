@@ -13,7 +13,7 @@ int main(int argc, char **argv)
 	ssize_t bytes = 0;
 	size_t line_buf_size = 0;
 	stack_t *stack = NULL;
-	
+
 	global.line_buf = NULL;
 	global.command = NULL;
 	if (argc != 2)
@@ -44,10 +44,6 @@ int main(int argc, char **argv)
 		free_grid(global.command), global.command = NULL;
 		bytes = getline(&global.line_buf, &line_buf_size, global.fd);
 	}
-
-	free(global.line_buf);
-	free_stack(stack);
-	fclose(global.fd);
-	free(global.command);
+	camilo_patino(stack);
 	return (0);
 }

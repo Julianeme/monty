@@ -2,6 +2,7 @@
 
 /**
  * value_check - Checks the arguments of a function are valid (only ints)
+ * @stack: double linked list
  * @line_number: line in execution
  * @val: the string to be checked and turned into int if valid
  * Return: string turned into int if is a valid number or error message if not
