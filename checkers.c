@@ -30,8 +30,7 @@ int value_check(stack_t *stack, char *val, unsigned int line_number)
 	return (1);
 }
 /**
- * value_check - Checks the arguments of a function are valid (only ints)
- * @batman: cheks for lines with only spaces and tabs in it
+ * batman - cheks for lines with only spaces and tabs in it
  * @line_buf: line to read
  * Return: 0 if not empty line, 1 otherwise
  */
@@ -42,11 +41,11 @@ int batman(char *line_buf)
 
 	while (line_buf[i])
 	{
-		if (line_buf[i] != ' ' || line_buf[i] != '\t' || line_buf[i !='\n'])
+		if (line_buf[i] != ' ' || line_buf[i] != '\t' || line_buf[i != '\n'])
 		{
-			return (0);
+			return (1);
 		}
 		i++;
 	}
-	return (1);
+	return (0);
 }

@@ -14,8 +14,7 @@ int main(int argc, char **argv)
 	size_t line_buf_size = 0;
 	stack_t *stack = NULL;
 
-	global.line_buf = NULL;
-	global.command = NULL;
+	global.line_buf = NULL, global.command = NULL;
 	if (argc != 2)
 	{
 		fprintf(stderr, "USAGE: monty file\n");
@@ -43,7 +42,6 @@ int main(int argc, char **argv)
 		{
 			if (strcmp(global.command[0], "push") == 0 && !global.command[1])
 				push_error(stack, i);
-
 			get_op(global.command[0], &stack, i);
 		}
 		free_grid(global.command), global.command = NULL;
