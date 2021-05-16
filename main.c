@@ -15,11 +15,8 @@ int main(int argc, char **argv)
 	stack_t *stack = NULL;
 
 	global.line_buf = NULL, global.command = NULL;
-	if (argc != 2)
-	{
-		fprintf(stderr, "USAGE: monty file\n");
-		exit(EXIT_FAILURE);
-	}
+
+	argc_checker(argc);
 	global.fd = fopen(argv[1], "r");
 	if (!global.fd)
 	{
