@@ -32,7 +32,7 @@ int main(int argc, char **argv)
 	{
 		i++;
 		command = words_tokenizer(line_buf);
-		if (command[1])
+		if (command[1] && strcmp(command[0], "push") == 0)
 			global.value = value_check(command[1], i);
 		if (command[0])
 		{
