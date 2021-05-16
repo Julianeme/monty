@@ -23,7 +23,7 @@ typedef struct global_struct
 {
 	int value;
 	FILE *fd;
-	char **cmds;
+	char **command;
 	char *line_buf;
 } global_v;
 
@@ -57,15 +57,14 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-extern global_v global;
 global_v global;
 
 void get_op(char *s, stack_t **stack, unsigned int line_number);
 char **lines_tokenizer(char *string);
 char **words_tokenizer(char *string);
 char *_strdup(char *str);
-void push_error(int i);
-int value_check(char *val, unsigned int line_number);
+void push_error(stack_t *stack, unsigned int i);
+int value_check(stack_t *stack, char *val, unsigned int line_number);
 void double_ptr_free(char **array);
 void free_grid(char **grid);
 void free_stack(stack_t *stack);
@@ -75,5 +74,5 @@ void pint(stack_t **stack, unsigned int line_number);
 void pop(stack_t **stack, unsigned int line_number);
 int count_words(char *string);
 void swap(stack_t **head, unsigned int line_number);
-
+void global_free(stack_t *stack);
 #endif

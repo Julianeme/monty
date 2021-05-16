@@ -30,6 +30,5 @@ void get_op(char *s, stack_t **stack, unsigned int line_number)
 		i++;
 	}
 	fprintf(stderr, "L%u: unknown instruction %s\n", line_number, s);
-	free(global.line_buf);
-	exit(EXIT_FAILURE);
+	global_free(*stack);
 }

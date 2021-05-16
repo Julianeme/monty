@@ -5,9 +5,8 @@
  * Return: void
  */
 
-void push_error(int i)
+void push_error(stack_t *stack_s, unsigned int i)
 {
 	fprintf(stderr, "L%u: usage: push integer\n", i);
-	free(global.line_buf);
-	exit(EXIT_FAILURE);
+	global_free(stack_s);
 }
