@@ -40,6 +40,11 @@ void pall(stack_t **stack, unsigned int line_number)
 {
 	stack_t *temp = *stack;
 
+	if (!*stack)
+	{
+		exit(0);
+	}
+
 	(void)line_number;
 	while (temp)
 	{
