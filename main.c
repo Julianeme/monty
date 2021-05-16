@@ -31,6 +31,11 @@ int main(int argc, char **argv)
 	while (bytes >= 0)
 	{
 		i++;
+		if (!batman(global.line_buf))
+		{
+			bytes = getline(&global.line_buf, &line_buf_size, global.fd);
+			continue;
+		}
 		global.command = words_tokenizer(global.line_buf);
 		if (global.command[1] && strcmp(global.command[0], "push") == 0)
 			global.value = value_check(stack, global.command[1], i);

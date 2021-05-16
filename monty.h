@@ -76,4 +76,6 @@ int count_words(char *string);
 void swap(stack_t **head, unsigned int line_number);
 void global_free(stack_t *stack);
 void camilo_patino(stack_t *stack);
+int batman(char *line_buf);
+
 #endif
