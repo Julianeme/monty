@@ -57,10 +57,10 @@ void sub(stack_t **head, unsigned int line_number)
 
 	if (!*head || !(*head)->next)
 	{
-		fprintf(stderr, "L%u: can't add, stack too short\n", line_number);
+		fprintf(stderr, "L%u: can't sub, stack too short\n", line_number);
 		global_free(*head);
 	}
-	(*head)->next->n -= (*head)->n;
+	(*head)->next->n = (*head)->next->n - (*head)->n;
 	if (temp->next)
 	{
 		*head = temp->next;
