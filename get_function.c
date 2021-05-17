@@ -17,8 +17,8 @@ void get_op(char *s, stack_t **stack, unsigned int line_number)
 		{"pop", pop},
 		{"swap", swap},
 		{"add", add},
-		{NULL, NULL}
-	};
+		{"nop", nop},
+		{NULL, NULL}};
 	int i = 0;
 
 	while (ops[i].opcode != NULL)

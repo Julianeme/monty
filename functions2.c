@@ -28,3 +28,17 @@ void add(stack_t **head, unsigned int line_number)
 	}
 	free(temp);
 }
+
+/**
+ * nop - The opcode nop doesn’t do anything.
+ * @head: a double pointer to the stack of the linked list
+ * @line_number: file line number where the op was requested
+ * Return: nothing if succes, EXIT_FAILURE if it fails
+ */
+
+void nop(stack_t **head, unsigned int line_number)
+{
+	(void)line_number;
+	(void)*head;
+	return;
+}
