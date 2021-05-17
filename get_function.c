@@ -20,6 +20,7 @@ void get_op(char *s, stack_t **stack, unsigned int line_number)
 		{"nop", nop},
 		{"sub", sub},
 		{"div", division},
+		{"mul", mul},
 		{NULL, NULL}};
 	int i = 0;
 

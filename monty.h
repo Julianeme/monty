@@ -82,5 +82,6 @@ void nop(stack_t **head, unsigned int line_number);
 void sub(stack_t **head, unsigned int line_number);
 void division(stack_t **head, unsigned int line_number);
 void argc_checker(int argc);
+void mul(stack_t **head, unsigned int line_number);
 
 #endif
