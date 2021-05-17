@@ -18,14 +18,20 @@ void push(stack_t **head, unsigned int line_number)
 		fprintf(stderr, "Error: malloc failed");
 		global_free(*head);
 	}
-	new_node->n = global.value, new_node->prev = NULL, new_node->next = NULL;
+	new_node->n = global.value;
+	new_node->prev = NULL;
+	new_node->next = NULL;
 	if (*head == NULL)
 	{
 		*head = new_node;
 	}
 	else
-		temp = *head, new_node->next = *head,
-		temp->prev = new_node, *head = new_node;
+	{
+		temp = *head;
+		new_node->next = *head;
+		temp->prev = new_node;
+		*head = new_node;
+	}
 }
 /**
  * pall -  prints all the elements of a doubly linked list.
@@ -52,7 +58,7 @@ void pall(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * pint -  prints all the elements of a doubly linked list.
+ * pint -  prints the top element of a doubly linked list.
  * @stack: a pointer to the stack of the list
  * @line_number: file line number where the op was requested
  * Return: Nothing
@@ -69,7 +75,7 @@ void pint(stack_t **stack, unsigned int line_number)
 	else
 	{
 		fprintf(stderr, "L%u: can't pint, stack empty\n", line_number);
-		exit(EXIT_FAILURE);
+		global_free(*stack);
 	}
 }
 
@@ -84,7 +90,7 @@ void pop(stack_t **stack, unsigned int line_number)
 {
 	stack_t *temp = *stack;
 
-	if (!*stack)
+	if (!*stack || !stack)
 	{
 		fprintf(stderr, "L%u: can't pop an empty stack\n", line_number);
 		global_free(*stack);

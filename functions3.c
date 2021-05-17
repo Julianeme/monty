@@ -34,3 +34,25 @@ void mod(stack_t **head, unsigned int line_number)
 	}
 	free(temp);
 }
+
+/**
+ * pchar - prints the char at the top of the stack, followed by a new line..
+ * @stack: a pointer to the stack of the list
+ * @line_number: file line number where the op was requested
+ * Return: Nothing
+ */
+
+void pchar(stack_t **stack, unsigned int line_number)
+{
+	stack_t *temp = *stack;
+
+	if (temp && temp->n >=0 && temp->n <128)
+	{
+		printf("%c\n", temp->n);
+	}
+	else
+	{
+		fprintf(stderr, "L%u: can't pchar, value out of range\n", line_number);
+		global_free(*stack);
+	}
+}
