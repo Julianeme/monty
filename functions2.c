@@ -74,14 +74,14 @@ void sub(stack_t **head, unsigned int line_number)
 }
 
 /**
- * div - divides the second top element of the stack by
+ * division - divides the second top element of the stack by
  * the top element of the stack
  * @head: a double pointer to the stack of the linked list
  * @line_number: file line number where the op was requested
  * Return: nothing if succes, EXIT_FAILURE if it fails
  */
 
-void div(stack_t **head, unsigned int line_number)
+void division(stack_t **head, unsigned int line_number)
 {
 	stack_t *temp = *head;
 

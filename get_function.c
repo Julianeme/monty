@@ -18,6 +18,8 @@ void get_op(char *s, stack_t **stack, unsigned int line_number)
 		{"swap", swap},
 		{"add", add},
 		{"nop", nop},
+		{"sub", sub},
+		{"div", division},
 		{NULL, NULL}};
 	int i = 0;
 
